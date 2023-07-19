@@ -1,0 +1,190 @@
+<html>
+
+<app-navbar></app-navbar>
+
+<div class="container-sm">
+
+  <h1>Heroe: {{ (heroe?.nombre || '')}}</h1>
+
+  <hr>
+  <!-- (ngSubmit)="actualizar()" -->
+
+  <form [formGroup]="Formulario">
+    <!-- //Nombre -->
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Heroe</label>
+      <div class="col-sm-9">
+        <input type="text" name="nombre" class="form-control" formControlName="nombre" placeholder="Nombre del heroe"
+          [ngClass]="{
+            'is-invalid': f['nombre'].errors && f['nombre'].touched
+          }" class="form-control" />
+
+        <div class="invalid-feedback" *ngIf="f['nombre'].errors">
+          <small *ngIf="f['nombre']['errors']['required']">Agregue un nombre</small>
+          <small *ngIf="f['nombre'].hasError('minlength') ">El nombre debe de ser de al menos 3 caracteres</small>
+        </div>
+      </div>
+    </div>
+    <!-- Fin nombre -->
+    <!-- URL -->
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">URL Imagen</label>
+      <div class="col-sm-9">
+        <input type="text" name="url" formControlName="url" placeholder="www.imagenes.io/jskf.png"
+          [ngClass]="{'is-invalid': f['url'].errors && f['url'].touched}" class="form-control" />
+        <div class="invalid-feedback" *ngIf="f['url'].errors">
+          <small *ngIf="f['url']['errors']['required']">Agregue una direccion de la imagen</small>
+        </div>
+      </div>
+    </div>
+    <!-- Fin URL -->
+
+    <!-- Descripcion -->
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Descripcion</label>
+      <div class="col-sm-9">
+        <textarea name="descripcion" formControlName="descripcion" placeholder="Describe al personaje"
+          class="form-control" [ngClass]="{
+            'is-invalid' : f['descripcion'].touched && f['descripcion'].errors
+          }"></textarea>
+        <div class="invalid-feedback" *ngIf="f['descripcion'].errors">
+          <small *ngIf="f['descripcion']['errors']['required']">Agregue una breve descripcion</small>
+        </div>
+      </div>
+    </div>
+    <!-- Fin descripcion -->
+
+    <!-- Compania -->
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Compañia</label>
+      <div class="col-sm-9">
+        <select name="compania" formControlName="compania" class="form-select" [ngClass]="{
+            'is-invalid' : f['compania'].touched && f['compania'].errors
+          }">
+          <option value="marvel">Marvel Comics</option>
+          <option value="DC Comics">DC Comics</option>
+          <option value="otros">Otros</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="f['compania'].errors">
+          <small *ngIf="f['compania']['errors']['required']">Elija la compañia de su heroe</small>
+        </div>
+      </div>
+    </div>
+    <!-- Fin categorias -->
+
+    <!-- Genero -->
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Género</label>
+      <div class="col-sm-9">
+        <select name="genero" formControlName="genero" class="form-select" [ngClass]="{
+          'is-invalid' : f['genero'].touched && f['genero'].errors
+        }">
+          <option value="hombre">Hombre</option>
+          <option value="mujer">Mujer</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="f['genero'].errors">
+          <small *ngIf="f['genero']['errors']['required']">Elija el sexo de su heroe</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Genero termina -->
+
+    <div class="pull-left">
+
+      <button type="submit" class="btn btn-success ml-2" (click)="actualizar()">
+        <img src="https://cdn-icons-png.flaticon.com/512/4659/4659930.png" style="width: 24px;" alt=""> Guardar
+      </button>
+
+      <button class="btn btn-danger ms-2" (click)="borrar()">
+        <img
+          src="https://icons-for-free.com/iconfiles/png/512/delete+remove+trash+trash+bin+trash+can+icon-1320073117929397588.png"
+          style="width: 24px;" alt=""> Borrar
+      </button>
+
+    </div>
+
+  </form>
+
+  <hr />
+
+
+  <div id="Preview" class="row">
+    <h2 class="text-muted col-12 col-md-12 text-center">Preview</h2>
+    <div class="card m-2 p-2 col-12 col-md-12 ms-3" style="max-height: 40%; width: 30rem; max-width: 90%;" [ngClass]="{
+    'masculino_card': Formulario.value.genero==='hombre',
+    'femenino_card': Formulario.value.genero ==='mujer'
+  }">
+      <img class="card-img-top" src="{{Formulario.value.url}}"
+        style="max-height: 250px; min-height: 100px;" alt="Imagen no encontrada">
+      <div class="card-body" [ngClass]="{
+    masculino_card_body: Formulario.value.genero ==='hombre',
+    femenino_card_body: Formulario.value.genero === 'mujer'
+  }">
+        <h3 class="card-title">{{Formulario.value.nombre.toUpperCase()}}</h3>
+
+        <div class="card-subtitle">
+          <!-- <h5>
+      {{item.compania}}
+    </h5> -->
+          <h5 *ngIf="Formulario.value.compania === 'marvel'">
+            Marvel Comics <img src="https://i.pinimg.com/originals/d8/05/c6/d805c64a9b9b4d46dc33ada956698c2b.png" alt=""
+              style="height: 22px;">
+          </h5>
+          <h5 *ngIf="Formulario.value.compania === 'DC Comics'">
+            DC Comics <img src="https://www.pngall.com/wp-content/uploads/11/DC-Comics-Logo-No-Background.png" alt=""
+              style="height: 22px;">
+          </h5>
+          <h5 *ngIf="Formulario.value.compania === 'otros'">
+            Heroes externos <img src="https://images.crunchbase.com/c_lpad,f_auto,q_auto:eco,dpr_1/ue1bpjwkqydi1ncihbmq"
+              alt="" style="height: 22px;">
+          </h5>
+        </div>
+        <p class="card-text">{{Formulario.value.descripcion}}</p>
+
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</html>
+
+
+
+
+  <!-- <div class="card col-4 m-2 p-2" style="width: 32%;" [ngClass]="{
+  'masculino_card': heroe.genero==='hombre',
+    'femenino_card': heroe.genero ==='mujer'
+  }">
+    <img class="card-img-top" src="{{heroe.url}}" alt="Card image cap">
+    <div class="card-body" [ngClass]="{
+      masculino_card_body: heroe.genero ==='hombre',
+      femenino_card_body: heroe.genero === 'mujer'
+    }">
+
+      <h3 class="card-title">{{ (heroe?.nombre || '').toUpperCase() }}</h3>
+
+
+      <div class="card-subtitle">
+
+        <h5 *ngIf="heroe.compania === 'marvel'">
+          Marvel Comics <img src="https://i.pinimg.com/originals/d8/05/c6/d805c64a9b9b4d46dc33ada956698c2b.png" alt=""
+            style="height: 22px;">
+        </h5>
+        <h5 *ngIf="heroe.compania === 'DC Comics'">
+          DC Comics <img src="https://www.pngall.com/wp-content/uploads/11/DC-Comics-Logo-No-Background.png" alt=""
+            style="height: 22px;">
+        </h5>
+        <h5 *ngIf="heroe.compania === 'otros'">
+          DC Comics <img src="https://www.pngall.com/wp-content/uploads/11/DC-Comics-Logo-No-Background.png" alt=""
+            style="height: 22px;">
+        </h5>
+      </div>
+      <p class="card-text">{{heroe.description}}</p>
+
+
+    </div>
+  </div> -->

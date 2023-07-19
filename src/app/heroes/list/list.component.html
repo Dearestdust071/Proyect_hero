@@ -1,0 +1,106 @@
+<html>
+<app-navbar></app-navbar>
+<!-- https://seeklogo.com/images/D/DC-logo-76F2B96066-seeklogo.com.png -->
+<div class="container">
+  <div class="row ">
+
+
+    <div class="col-12 col-md-4 mb-4"  *ngFor="let item of ejemplos; let i = index">
+      <div class="card p-2" style="height:fit-content;" (click)="imprimir(item.id)"
+        [ngClass]="{
+        'masculino_card': item.genero==='hombre',
+        'femenino_card': item.genero ==='mujer'
+      }">
+        <img class="card-img-top" src="{{item.url}}" alt="Card image cap">
+        <div class="card-body" [ngClass]="{
+          masculino_card_body: item.genero ==='hombre',
+          femenino_card_body: item.genero ==='mujer'
+        }">
+          <h3 class="card-title">{{item.nombre.toUpperCase()}}</h3>
+          <div class="card-subtitle">
+            <!-- <h5>
+              {{item.compania}}
+            </h5> -->
+            <h5 *ngIf="item.compania === 'marvel'">
+              Marvel Comics <img src="https://i.pinimg.com/originals/d8/05/c6/d805c64a9b9b4d46dc33ada956698c2b.png" alt="" style="height: 22px;">
+            </h5>
+            <h5 *ngIf="item.compania === 'DC Comics'">
+              DC Comics <img src="https://www.pngall.com/wp-content/uploads/11/DC-Comics-Logo-No-Background.png" alt="" style="height: 22px;">
+            </h5>
+            <h5 *ngIf="item.compania === 'otros'">
+              Heroes externos <img src="https://images.crunchbase.com/c_lpad,f_auto,q_auto:eco,dpr_1/ue1bpjwkqydi1ncihbmq" alt=""
+                style="height: 22px;">
+            </h5>
+          </div>
+            <p class="card-text">{{item.description}}</p>
+        </div>
+        <div class="card-footer text-danger bg-light">
+          <small class="text-muted">{{item.timestamp}}</small>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+
+</div>
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="card col-4 m-2 p-2" style="width: 32%; " (click)="impr()" *ngFor="let item of ejemplos; let i = index">
+      <img class="card-img-top"
+        src="https://www.enter.co/wp-content/uploads/2022/11/pwCZBRuWMc7iwrTLqUoQ6E-1200-80-768x432.jpg"
+        alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{i}}</h5>
+        <p class="card-text">{{item.descripcion}}</p>
+        <a href="#" class="btn btn-primary">Boton</a>
+      </div>
+      <div class="card-footer text-white bg-light">
+        <small class="text-muted">11-July-2023 05:29 PM</small>
+      </div>
+    </div> -->
+<!--
+    <div class="card col-4 m-2 p-2" style="width: 32%; background-color: #f6f62e;" (click)="impr()" *ngFor="let item of ejemplos; let i = index">
+      <img class="card-img-top"
+        src="https://www.enter.co/wp-content/uploads/2022/11/pwCZBRuWMc7iwrTLqUoQ6E-1200-80-768x432.jpg"
+        alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{i}}</h5>
+        <p class="card-text">{{item.descripcion}}</p>
+        <a href="#" class="btn btn-primary">Boton</a>
+      </div>
+    </div>
+
+    <div class="card col-4 m-2 p-2" style="width: 32%; background-color: rgba(0,0,0,0); border-color: rgba(0, 0, 0, 1);" (click)="impr()" *ngFor="let item of ejemplos; let i = index">
+      <img class="card-img-top"
+        src="https://www.enter.co/wp-content/uploads/2022/11/pwCZBRuWMc7iwrTLqUoQ6E-1200-80-768x432.jpg"
+        alt="Card image cap">
+      <div class="card-body" style=" background-color: #f6f62e;">
+        <h5 class="card-title">{{i}}</h5>
+        <p class="card-text">{{item.descripcion}}</p>
+        <a href="#" class="btn btn-primary">Boton</a>
+      </div>
+    </div> -->
