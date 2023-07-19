@@ -1,4 +1,4 @@
-<html>
+
 
 <app-navbar></app-navbar>
 
@@ -7,8 +7,6 @@
   <h1>Heroe: {{ (heroe?.nombre || '')}}</h1>
 
   <hr>
-  <!-- (ngSubmit)="actualizar()" -->
-
   <form [formGroup]="Formulario">
     <!-- //Nombre -->
     <div class="mb-3 row">
@@ -150,41 +148,6 @@
 
 </div>
 
-</html>
 
 
 
-
-  <!-- <div class="card col-4 m-2 p-2" style="width: 32%;" [ngClass]="{
-  'masculino_card': heroe.genero==='hombre',
-    'femenino_card': heroe.genero ==='mujer'
-  }">
-    <img class="card-img-top" src="{{heroe.url}}" alt="Card image cap">
-    <div class="card-body" [ngClass]="{
-      masculino_card_body: heroe.genero ==='hombre',
-      femenino_card_body: heroe.genero === 'mujer'
-    }">
-
-      <h3 class="card-title">{{ (heroe?.nombre || '').toUpperCase() }}</h3>
-
-
-      <div class="card-subtitle">
-
-        <h5 *ngIf="heroe.compania === 'marvel'">
-          Marvel Comics <img src="https://i.pinimg.com/originals/d8/05/c6/d805c64a9b9b4d46dc33ada956698c2b.png" alt=""
-            style="height: 22px;">
-        </h5>
-        <h5 *ngIf="heroe.compania === 'DC Comics'">
-          DC Comics <img src="https://www.pngall.com/wp-content/uploads/11/DC-Comics-Logo-No-Background.png" alt=""
-            style="height: 22px;">
-        </h5>
-        <h5 *ngIf="heroe.compania === 'otros'">
-          DC Comics <img src="https://www.pngall.com/wp-content/uploads/11/DC-Comics-Logo-No-Background.png" alt=""
-            style="height: 22px;">
-        </h5>
-      </div>
-      <p class="card-text">{{heroe.description}}</p>
-
-
-    </div>
-  </div> -->
