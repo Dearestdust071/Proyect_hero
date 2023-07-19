@@ -4,16 +4,19 @@
 }
 
 .masculino_card{
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
+/*   Cambiar agregar color */
+/*   background-color: rgba(0, 0, 0, 0.7);
+  color: white; */
 }
 .masculino_card_body{
-  background-color: rgb(0, 0, 0);
+/*   Cambiar agregar color */
+/*   background-color: rgb(0, 0, 0); */
 }
 .femenino_card{
-  color: black;
-  background-color: rgba(246, 246, 46,.6);
+/*   Cambiar / Agregar color */
+/*   color: black; */
+/*   background-color: rgba(246, 246, 46,.6); */
 }
 .femenino_card_body{
-  background-color: #f6f62e;
+/*   background-color: #f6f62e; */
 }
